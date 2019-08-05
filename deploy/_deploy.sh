@@ -25,7 +25,7 @@ fi
 
 # pega os parametros rsync para o deploy ou usa um default
 
-RSYNC_PARAMS=${2:-'-vrzch'}
+RSYNC_PARAMS=${2:-'-vrzuh'}
 
 # ------------------------------------------------------------------------------------
 
