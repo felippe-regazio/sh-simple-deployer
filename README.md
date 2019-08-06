@@ -70,7 +70,7 @@ Antes de fechar essa parte no servidor precisamos dar permissão de execução p
 sudo chmod +x hook/post-receive.
 ```
 
-OK, a acabamos a parte do servidor, agora vamos para nosso ambiente local na qual estamos desenvolvendo. Navegue até o diretório do seu projeto e caso ainda não tenha iniciado um repositório git nele faça (git init), uma vez já com o git iniciado no projeto precisamos adicionar uma indicação remote nele, para isso use o comando abaixo (tudo na mesma linha) como se faz quando vamos adicionar o origin (Github/Bitbucket).
+OK, a acabamos a parte do servidor, agora voltemos para o deployer.
 
 # HOSTS
 
