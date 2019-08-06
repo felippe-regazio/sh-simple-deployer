@@ -2,10 +2,12 @@
 
 source $(dirname "$0")/_hosts.sh
 
+# =================================================
+# COLLECTING PARAMS
+# =================================================
+
 # $1 = deve ser um nome para referenciar um array em _hosts, ou utilizara "default"
 # $2 deve ser o set de parametros pra passar para o rsync
-
-# ------------------------------------------------------------------------------------
 
 # pega o array contendo as credenciais do host desejado ou usa 'default'
 # o eval utiliza o nome passado em HOST_INDEX pra referenciar um array em _hosts.sh
@@ -23,12 +25,6 @@ if [ -z $CREDENTIALS ];then
 	exit
 fi
 
-# pega os parametros rsync para o deploy ou usa um default
-
-RSYNC_PARAMS=${2:-'-vrzuh'}
-
-# ------------------------------------------------------------------------------------
-
 # define o diretorio abs em que o script esta
 
 BASEDIR=$( cd "$(dirname "$0")" ; pwd -P )
@@ -41,17 +37,39 @@ mkdir -p $BASEDIR/log
 
 TODAY=`date '+%d_%m_%Y__%H_%M_%S'`;
 
-# ------------------------------------------------------------------------------------
+# =================================================
+# SHOWING THE REMINDER
+# =================================================
 
 echo "\n----------------------\n"
 cat $BASEDIR/remind.txt
 echo "\n\n----------------------\n\n"
 
-# chama o rsync passando a lista de arquivos e a lista de excludes como
-# parametro para upload dos arquivos via ssh seguindo os params passados
-# um log do output desse comando será salvo na pasta ./log 
+# =================================================
+# DEPLOYING
+# =================================================
 
-cd $BASEDIR/../ && rsync $RSYNC_PARAMS -e ssh --files-from=$BASEDIR/directories.txt --exclude-from=$BASEDIR/ignore.txt . $CREDENTIALS:$DESTINATION | tee $BASEDIR/log/deploy_$TODAY.log
+if [ "${DEPLOYMENT_TYPE}" = "git" ]; then
+
+	git remote add production $CREDENTIALS:$DESTINATION/app.git
+	git remote update
+	git push production master
+
+else
+
+	RSYNC_PARAMS=${2:-'-vrzuh'}
+
+	# chama o rsync passando a lista de arquivos e a lista de excludes como
+	# parametro para upload dos arquivos via ssh seguindo os params passados
+	# um log do output desse comando será salvo na pasta ./log 
+
+	cd $BASEDIR/../ && rsync $RSYNC_PARAMS -e ssh --files-from=$BASEDIR/directories.txt --exclude-from=$BASEDIR/ignore.txt . $CREDENTIALS:$DESTINATION | tee $BASEDIR/log/deploy_$TODAY.log
+
+fi
+
+# =================================================
+# LOG AND FINISH
+# =================================================
 
 # assina o log com o nome do user atual
 
