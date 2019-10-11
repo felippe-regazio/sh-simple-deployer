@@ -17,19 +17,15 @@
 # isso significa que apos declarar o array, a primeira linha deve ser
 # a conexao ssh no padrao usuario@host. a segunda linha deve ser o path
 # de destino dos arquivos no servidor, e a terceira linha a url do projeto
-#
-# DEPLOYMENT TYPE
-#
-# Deployment Type contem uma string com a estrategia que sera utilizada 
-# no deploy. Recebe dois parametros:
-#
-# 1. rsync : utiliza rsync para syncar a pasta local com a remota
-# 2. git   : utiliza git para syncar a pasta local com um --bare remoto
-
-DEPLOYMENT_TYPE="rsync"
 
 declare -a default=(
-	user@server
-	/project/path/on/server
-	https://project.url/
+	root@127.0.0.0
+	/path/to/project/root/on/server
+	https://yourprojecturl.com
+)
+
+declare -a another=(
+	another_root@127.0.0.0
+	another/path/to/project/root/on/server
+	https://anotherprojecturl.com
 )

@@ -1,1 +1,9 @@
+logs
 node_modules
+tmp
+deploy
+./deploy.sh
+./connect.sh
+./gitignore
+*.git
+*.md
