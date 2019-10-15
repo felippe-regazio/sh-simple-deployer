@@ -102,7 +102,10 @@ cd $BASEDIR/../ && rsync $RSYNC_PARAMS -e 'ssh -p '"$PORT" --files-from=$BASEDIR
 
 # assina o log com o nome do user atual
 
-echo "" >> $BASEDIR/log/deploy_$TODAY.log && date >> $BASEDIR/log/deploy_$TODAY.log && whoami >> $BASEDIR/log/deploy_$TODAY.log
+echo "" >> $BASEDIR/log/deploy_$TODAY.log && 
+echo "By: $(whoami)" >> $BASEDIR/log/deploy_$TODAY.log
+date >> $BASEDIR/log/deploy_$TODAY.log
+echo "Git Branch Deployed: $(git branch | grep \* | cut -d ' ' -f2)" >> $BASEDIR/log/deploy_$TODAY.log
 
 # finish message
 
