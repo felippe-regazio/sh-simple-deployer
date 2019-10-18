@@ -63,7 +63,7 @@ This paths, folder, rules or files will be ignored by rsync.
 You can write something on the remind.txt file.
 This will be showed everytime someone runs deploy.sh.
 
-### 6. Execute. To do it, run:
+### 6. Execute! To do it, run:
 
 Now, when you modify something on your project, just run de deployer and it will sync
 your local project with the server, based on your configurations.
