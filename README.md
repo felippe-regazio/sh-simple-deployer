@@ -5,7 +5,7 @@ It uses rsync to sync files between local machine and server.
 
 # Configuring
 
-1. Copy this entire folder to your project root.
+1. Copy the project folder content to your project root.
 2. Configure the \_hosts.sh file on ./deploy folder
 
 You can add how many arrays you need on the \_hosts.sh file.
