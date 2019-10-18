@@ -46,16 +46,26 @@ declare -a default=(
 )
 ```
 
-### 3. Add the directories that you want to upload on the directores.txt file
-inside the ./deploy folder. Add the paths relative to project root, separated
-by a blank line.
+### 3. Add the directories that you want to upload on the directories.txt 
 
-### 4. Add the directories you want to ignore on the ignore.txt file, in the same
-way you did with the directories.txt.
+The directories.txt lives inside the ./deploy folder. 
+Add the paths or files relative to project root, separated by a blank line.
 
-### 5. Add a optional message to appear on the console when running the deployer.
+### 4. Add the directories you want to ignore on the ignore.txt 
+
+The ignore.txt file lives inside the ./deploy folder. 
+Add paths in the same way you did with the directories.txt.
+This paths, folder, rules or files will be ignored by rsync.
+
+### 5. Add an optional message to appear on the console when running the deployer.
+
+You can write something on the remind.txt file.
+This will be showed everytime someone runs deploy.sh.
 
 ### 6. Execute. To do it, run:
+
+Now, when you modify something on your project, just run de deployer and it will sync
+your local project with the server, based on your configurations.
 
 ```bash
 sh deploy.sh
