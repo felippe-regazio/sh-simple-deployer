@@ -88,6 +88,8 @@ sh deploy.sh host_array_name
 1. \*Unix local system with rsync and git installed. 
 2. \*Unix server with Rsync and SSH connection enabled.
 
+Most of this requirements are just a default configuration for any \*Unix system.
+
 # Git ?
 
 This script was made to work with git. But if your project its not using git, there is no problem.
