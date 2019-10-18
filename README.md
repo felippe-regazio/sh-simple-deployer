@@ -89,6 +89,7 @@ sh deploy.sh host_array_name
 2. \*Unix server with Rsync and SSH connection enabled.
 
 Most of this requirements are just a default configuration for any \*Unix system.
+Tested with Linux and Mac OS systems, and worked with no environment setup.
 
 # Git ?
 
