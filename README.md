@@ -1,17 +1,24 @@
 # SH Simple Deployer
 
-Shell script simple deployment with RSYNC.
+This is a tiny deployer written in shell script. 
+It uses rsync to sync files between local machine and server.
 
-# Getting started
+# Configuring
 
-Add this folder content to your project root.
-Configure the following things inside ./deployer directory:
+1. Copy this entire folder to your project root.
+2. Configure the \_hosts.sh file on ./deploy folder
 
-### \_hosts.sh 
+You can add how many arrays you need on the \_hosts.sh file.
+Each array represents a reference to deployer to where send files.
+Must follow a pattern:
 
-A bash array containing your host information.
-Every host must follow this pattern. The default
-host must always exist.
+- The 1st line must be a connection string like user@destination:port, 
+where port is optional.
+
+- The 2nd line must be the absolute path for the project root,
+this is where rsync will send the files.
+
+- The 3th line must be the project server IP or URL.
 
 ```bash
 declare -a default=( 
@@ -19,36 +26,18 @@ declare -a default=(
 	/server/dest/path/abs  
 	https://myproject.url/  
 )
-
-declare -a another=( 
-	another@ssh_another_host:port
-	/server/dest/path/another_abs  
-	https://another_project.url/  
-)
 ```
 
-The array order is:
+3. Add the directories that you want to upload on the directores.txt file
+inside the ./deploy folder. Add the paths relative to project root, separated
+by a blank line.
 
-- SSH connection with optional port.
-- Abs path on the server to where upload files
-- Project URL or IP
+4. Add the directories you want to ignore on the ignore.txt file, in the same
+way you did with the directories.txt.
 
-### directories.txt
+5. Add a optional message to appear on the console when running the deployer.
 
-Add the directories that you want to upload.
-Path notation must be relative to the project root.
-
-### ignore.txt
-
-Same as directories.txt, but refer to dirs to ignore.
-
-### remind.txt
-
-A message to appear always when executing the deploy.sh.
-
-### Exec
-
-Now run
+6. Execute. To do it, run:
 
 ```bash
 sh deploy.sh
@@ -60,10 +49,13 @@ or with a specific host configuration from \_hosts.sh:
 sh deploy.sh host_array_name
 ```
 
-# Params
+# Rsync
+
+This scripts need rsync to work. The default rsync params is `-vrzuh`.
+You can pass a new set of rsync params to the deployer as the second arg:
 
 ```bash
-sh deploy.sh {host_index} {rsync_params}
+sh deploy.sh {hosts_array_index} {rsync_params}
 ```
 
 # ABOUT
