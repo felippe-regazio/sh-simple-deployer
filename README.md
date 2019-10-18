@@ -9,6 +9,12 @@ and sync. The rsync will always sync only modified files.
 # Configuring
 
 ### 1. Copy the project folder content to your project root.
+
+You must copy this project folder content to the root of your project.
+The deployer basepath will be the same of the deploy.sh file, and will be from where
+your files will be sync. So, keep the deploy.sh file and the deploy folder on the very
+root of your project.
+
 ### 2. Configure the \_hosts.sh file on ./deploy folder
 
 This file holds the host list, an array collection of possible hosts
