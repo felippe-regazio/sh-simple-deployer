@@ -8,7 +8,7 @@ and sync. The rsync will always sync only modified files.
 
 # Getting Started
 
-### 📂 Copy the project folder content to your project root.
+### 📂 Copy this project folder content to your project root.
 
 You must copy this project folder content to the root of your project.
 The deployer basepath will be the same of the deploy.sh file, and will be from where
