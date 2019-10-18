@@ -85,8 +85,8 @@ sh deploy.sh host_array_name
 
 # Requirements
 
-1. \*Unix system with rsync installed. 
-2. The project server must accept SSH connections.
+1. \*Unix local system with rsync and git installed. 
+2. \*Unix server with Rsync and SSH connection enabled.
 
 # Git ?
 
