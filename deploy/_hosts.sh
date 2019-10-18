@@ -5,7 +5,7 @@
 #
 # The deployer will look at this file to know where to send the files.
 # If a name is not passed, will try to use the "default". Otherwise,
-# you must pass a _hosts.sh index name lik:
+# you must pass a _hosts.sh index name like:
 #
 # sh deployer.sh {host_index}
 #

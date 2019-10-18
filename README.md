@@ -8,9 +8,16 @@ It uses rsync to sync files between local machine and server.
 1. Copy the project folder content to your project root.
 2. Configure the \_hosts.sh file on ./deploy folder
 
-You can add how many arrays you need on the \_hosts.sh file.
-Each array represents a reference to deployer to where send files.
-Must follow a pattern:
+This file holds the host list, an array collection of possible hosts
+to perform a deploy on the current project.
+
+The deployer will look at this file to know where to send the files.
+If a name is not passed, will try to use the "default". Otherwise,
+you must pass a \_hosts.sh index name like:  
+
+sh deployer.sh {host_index}
+
+The array pattern must be always the same.
 
 - The 1st line must be a connection string like user@destination:port, 
 where port is optional.
