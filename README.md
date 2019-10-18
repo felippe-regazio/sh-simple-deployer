@@ -6,7 +6,7 @@ It uses rsync to sync files between local machine and server.
 You can save connections, add multiple hosts, include and ignore entire directories to deployment,
 and sync. The rsync will always sync only modified files.
 
-# Configuring
+# Getting Started
 
 ### 📂 Copy the project folder content to your project root.
 
