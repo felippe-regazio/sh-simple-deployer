@@ -85,8 +85,14 @@ sh deploy.sh host_array_name
 
 # Requirements
 
-This scripts requires a Unix system with rsync installed, and the server must accept SSH connections.
-Works well with Linux and Mac OS.
+1. \*Unix system with rsync installed. 
+2. The project server must accept SSH connections.
+
+# Git ?
+
+This script was made to work with git. But if your project its not using git, there is no problem.
+You will see a `fata: ...` error on the deployment information telling you `not a git repository`,
+just ignore it.
 
 # Rsync
 
