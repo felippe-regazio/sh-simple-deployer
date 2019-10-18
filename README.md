@@ -50,6 +50,7 @@ declare -a default=(
 
 The directories.txt lives inside the ./deploy folder. 
 Add the paths or files relative to project root, separated by a blank line.
+The default directory to sync is ".", or: the entire root folder.
 
 ### 4. Add the directories you want to ignore on the ignore.txt 
 
