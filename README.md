@@ -8,14 +8,14 @@ and sync. The rsync will always sync only modified files.
 
 # Configuring
 
-### 1. Copy the project folder content to your project root.
+### 📂 Copy the project folder content to your project root.
 
 You must copy this project folder content to the root of your project.
 The deployer basepath will be the same of the deploy.sh file, and will be from where
 your files will be sync. So, keep the deploy.sh file and the deploy folder on the very
 root of your project.
 
-### 2. Configure the \_hosts.sh file on ./deploy folder
+### 🔧 Configure the \_hosts.sh file on ./deploy folder
 
 This file holds the host list, an array collection of possible hosts
 to perform a deploy on the current project.
@@ -33,7 +33,7 @@ The array pattern must be always the same.
 - The 1st line must be a connection string like user@destination:port, 
 where port is optional.
 
-- The 2nd line must be the absolute path for the project root,
+- The 2nd line must be the absolute path for the project root on the server,
 this is where rsync will send the files.
 
 - The 3th line must be the project server IP or URL.
@@ -46,24 +46,28 @@ declare -a default=(
 )
 ```
 
-### 3. Add the directories that you want to upload on the directories.txt 
+```WARNING:```: To discover your project absolute root on the server, access your
+server using ssh, navigate to your project root folder, and type `pwd`. Dont use
+filezilla or GUI clients as reference to find the root path.
+
+### ✏️ Add the directories that you want to upload on the directories.txt 
 
 The directories.txt lives inside the ./deploy folder. 
 Add the paths or files relative to project root, separated by a blank line.
 The default directory to sync is ".", or: the entire root folder.
 
-### 4. Add the directories you want to ignore on the ignore.txt 
+### ✏️ Add the directories you want to ignore on the ignore.txt 
 
 The ignore.txt file lives inside the ./deploy folder. 
 Add paths in the same way you did with the directories.txt.
 This paths, folder, rules or files will be ignored by rsync.
 
-### 5. Add an optional message to appear on the console when running the deployer.
+### ✏️ Add an optional message to appear on the console when running the deployer.
 
 You can write something on the remind.txt file.
 This will be showed everytime someone runs deploy.sh.
 
-### 6. Execute! To do it, run:
+### 🚀 Execute! To do it, run:
 
 Now, when you modify something on your project, just run de deployer and it will sync
 your local project with the server, based on your configurations.
