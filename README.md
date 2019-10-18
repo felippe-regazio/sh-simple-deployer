@@ -69,8 +69,9 @@ This will be showed everytime someone runs deploy.sh.
 
 ### 🚀 Execute! To do it, run:
 
-Now, when you modify something on your project, just run de deployer and it will sync
-your local project with the server, based on your configurations.
+When you run it for the first time, rsync will sync your local project with the server one.
+Now, when you modify something on your project, just run de deployer and it will sync only the
+modified files, based on your configuration. A log will be saved on ./deploy/logs.
 
 ```bash
 sh deploy.sh
@@ -81,6 +82,11 @@ or with a specific host configuration from \_hosts.sh:
 ```bash
 sh deploy.sh host_array_name
 ```
+
+# Requirements
+
+This scripts requires a Unix system with rsync installed, and the server must accept SSH connections.
+Works well with Linux and Mac OS.
 
 # Rsync
 
