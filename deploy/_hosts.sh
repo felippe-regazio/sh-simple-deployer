@@ -1,22 +1,20 @@
 #!/bin/sh
 
-# SOBRE ESTE ARQUIVO
+# This file holds the host list, an array collection of possible hosts
+# to perform a deploy on the current project.
 #
-# este arquivo contem a lista de hosts possiveis de serem utilizados
-# para o deploy de um projeto. a linha de comando para o deployer aceita
-# que vc referencie um destes arrays para utilizar como credenciais na
-# hora do upload - exemplo:
+# The deployer will look at this file to know where to send the files.
+# If a name is not passed, will try to use the "default". Otherwise,
+# you must pass a _hosts.sh index name lik:
 #
 # sh deployer.sh {host_index}
 #
-# caso vc nao passe um host index, o index "default" será utilizado.
-# caso passe, o deployer procurará pelo index nesta lista, e o retornará
-# caso exista ou falhará caso nao existe. o index eh case sensitive.
-#
-# o padrao demonstrado no index default deve ser estritamente seguido.
-# isso significa que apos declarar o array, a primeira linha deve ser
-# a conexao ssh no padrao usuario@host. a segunda linha deve ser o path
-# de destino dos arquivos no servidor, e a terceira linha a url do projeto
+# The array pattern must be always the same.
+# 1. The 1st line must be a connection string like user@destination:port, 
+# where port is optional.
+# 2. The 2nd line must be the absolute path for the project root,
+# this is where rsync will send the files.
+# 3. The 3th line must be the project server IP or URL.
 
 declare -a default=(
 	root@127.0.0.0

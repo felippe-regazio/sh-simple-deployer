@@ -22,29 +22,19 @@ NC='\033[0m'
 # COLLECTING PARAMS
 # =================================================
 
-# $1 = deve ser um nome para referenciar um array em _hosts, ou utilizara "default"
-# $2 deve ser o set de parametros pra passar para o rsync
-
-# pega o array contendo as credenciais do host desejado ou usa 'default'
-# o eval utiliza o nome passado em HOST_INDEX pra referenciar um array em _hosts.sh
-# The var CREDENTIALS must end with the ssh conn, and DESTINATION the server path
+# $1 = a name referencing an array on _hosts.sh
+# $2 = rsync params if you wish to override defaults
+# get the _hosts.sh array and split into separated Vars
 
 _HOST_INDEX=${1:-'default'}
 
 eval "CONN=\"\${$_HOST_INDEX[0]}\""
 eval "DESTINATION=\"\${$_HOST_INDEX[1]}\""
 
-# CONN eh a primeira linha do array de conexao no arquivo _hosts
-# ele representa a linha de conexao ssh no padrao user@server:port
-# abaixo parseamos a conn e pegamos o que interessa
-# credentials eh tudo que vem antes da porta, user@server por ex.
-# DESTINATION eh a segunda linha no array em _hosts e deve ser o
-# path absoluto para onde os arquivos serao enviados via rsync
+# CONN is the connection string on _hosts. It will be splited
+# into a ssh connection string and a port (if passed port)
 
 CREDENTIALS=${CONN%:*}
-
-# se o usuario configurou uma porta na string de conexao
-# sabemos se ha uma porta caso exista o char : em $CONN
 
 if [[ $CONN == *":"* ]]; then
   PORT=${CONN##*:}
@@ -52,14 +42,14 @@ else
 	PORT=22
 fi
 
-# falha se o host nao foi encontrado em _hosts.sh
+# will fail if the passed host reference ($1) wasnt found on _hosts.sh
 
 if [ -z $CREDENTIALS ];then
 	echo "\nERROR: HOST NOT FOUND:\nHost '$_HOST_INDEX' cound not be found on _hosts.sh file\n"
 	exit
 fi
 
-# define o diretorio abs em que o script esta
+# get this script abs path
 
 BASEDIR=$( cd "$(dirname "$0")" ; pwd -P )
 
@@ -67,12 +57,12 @@ BASEDIR=$( cd "$(dirname "$0")" ; pwd -P )
 
 mkdir -p $BASEDIR/log
 
-# pega a data de hoje em formato timestamp
+# generates a data timestamp string
 
 TODAY=`date '+%Y_%m_%d__%H_%M_%S'`;
 
 # =================================================
-# SHOWING THE REMINDER
+# SHOWING THE REMINDER & INFO
 # =================================================
 
 echo "\n----------------------\n"
@@ -90,9 +80,7 @@ echo "SendingTo: ${GREEN}$DESTINATION\n${NC}"
 
 RSYNC_PARAMS=${2:-'-vrzuh'}
 
-# chama o rsync passando a lista de arquivos e a lista de excludes como
-# parametro para upload dos arquivos via ssh seguindo os params passados
-# um log do output desse comando será salvo na pasta ./log 
+# call rsync passing the directores, ignore list and ask to up using ssh
 
 cd $BASEDIR/../ && rsync $RSYNC_PARAMS -e 'ssh -p '"$PORT" --files-from=$BASEDIR/directories.txt --exclude-from=$BASEDIR/ignore.txt . $CREDENTIALS:$DESTINATION | tee $BASEDIR/log/deploy_$TODAY.log
 
@@ -100,7 +88,7 @@ cd $BASEDIR/../ && rsync $RSYNC_PARAMS -e 'ssh -p '"$PORT" --files-from=$BASEDIR
 # LOG AND FINISH
 # =================================================
 
-# assina o log com o nome do user atual
+# sign the log
 
 echo "" >> $BASEDIR/log/deploy_$TODAY.log && 
 echo "By: $(whoami)" >> $BASEDIR/log/deploy_$TODAY.log
