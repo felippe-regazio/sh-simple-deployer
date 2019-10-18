@@ -8,8 +8,8 @@ and sync. The rsync will always sync only modified files.
 
 # Configuring
 
-1. Copy the project folder content to your project root.
-2. Configure the \_hosts.sh file on ./deploy folder
+### 1. Copy the project folder content to your project root.
+### 2. Configure the \_hosts.sh file on ./deploy folder
 
 This file holds the host list, an array collection of possible hosts
 to perform a deploy on the current project.
@@ -18,7 +18,9 @@ The deployer will look at this file to know where to send the files.
 If a name is not passed, will try to use the "default". Otherwise,
 you must pass a \_hosts.sh index name like:  
 
+``` bash
 sh deployer.sh {host_index}
+```
 
 The array pattern must be always the same.
 
@@ -38,16 +40,16 @@ declare -a default=(
 )
 ```
 
-3. Add the directories that you want to upload on the directores.txt file
+### 3. Add the directories that you want to upload on the directores.txt file
 inside the ./deploy folder. Add the paths relative to project root, separated
 by a blank line.
 
-4. Add the directories you want to ignore on the ignore.txt file, in the same
+### 4. Add the directories you want to ignore on the ignore.txt file, in the same
 way you did with the directories.txt.
 
-5. Add a optional message to appear on the console when running the deployer.
+### 5. Add a optional message to appear on the console when running the deployer.
 
-6. Execute. To do it, run:
+### 6. Execute. To do it, run:
 
 ```bash
 sh deploy.sh
