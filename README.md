@@ -98,7 +98,7 @@ just ignore it.
 
 # Rsync
 
-This scripts need rsync to work. The default rsync params is `-vrzuh`.
+The default rsync params used to sync files is `-vrzuh`.
 You can pass a new set of rsync params to the deployer as the second arg:
 
 ```bash
