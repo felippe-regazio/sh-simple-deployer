@@ -105,7 +105,7 @@ The default rsync params used to sync files is `-vrzuh`.
 You can pass a new set of rsync params to the deployer as the second arg:
 
 ```bash
-sh deploy.sh {hosts_array_index} {rsync_params}
+./deploy.sh {hosts_array_index} {rsync_params}
 ```
 
 # ABOUT
