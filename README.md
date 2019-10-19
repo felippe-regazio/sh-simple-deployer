@@ -73,14 +73,16 @@ When you run it for the first time, rsync will sync your local project with the 
 Now, when you modify something on your project, just run de deployer and it will sync only the
 modified files, based on your configuration. A log will be saved on ./deploy/logs.
 
+You could run it using `sh deploy.sh`, but from a system perspective, you don't need to launch a new shell by using `sh`. If you need sudo you can use `su` as well. So, finally run the script by typing:
+
 ```bash
-sh deploy.sh
+./deploy.sh
 ```
 
 or with a specific host configuration from \_hosts.sh:
 
 ```bash
-sh deploy.sh host_array_name
+./deploy.sh host_array_name
 ```
 
 # Requirements
