@@ -25,7 +25,7 @@ If a name is not passed, will try to use the "default". Otherwise,
 you must pass a \_hosts.sh index name like:  
 
 ``` bash
-sh deployer.sh {host_index}
+./ deploy.sh {host_index}
 ```
 
 The array pattern must be always the same.
