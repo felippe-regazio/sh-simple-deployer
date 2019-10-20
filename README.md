@@ -6,6 +6,9 @@ It uses rsync to sync files between local machine and server.
 You can save connections, add multiple hosts, include and ignore entire directories to deployment,
 and sync. The rsync will always sync only modified files.
 
+You can read this post if you prefer a quick and fast start
+https://dev.to/felipperegazio/a-tiny-deployer-made-with-shell-script-and-rsync-3djd
+
 # Getting Started
 
 ### 📂 Copy this project folder content to your project root.
