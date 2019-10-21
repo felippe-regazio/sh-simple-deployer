@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # This file holds the host list, an array collection of possible hosts
 # to perform a deploy on the current project.

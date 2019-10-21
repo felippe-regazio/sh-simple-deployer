@@ -1,5 +1,4 @@
-
-#!/bin/sh
+#!/usr/bin/env bash
 
 source $(dirname "$0")/_hosts.sh
 
@@ -45,7 +44,7 @@ fi
 # will fail if the passed host reference ($1) wasnt found on _hosts.sh
 
 if [ -z $CREDENTIALS ];then
-	echo "\nERROR: HOST NOT FOUND:\nHost '$_HOST_INDEX' cound not be found on _hosts.sh file\n"
+	printf "\n${RED}ERROR: HOST NOT FOUND ON _HOSTS:${NC}\nHost '$_HOST_INDEX' cound not be found on _hosts.sh file\n\n"
 	exit
 fi
 
@@ -65,14 +64,14 @@ TODAY=`date '+%Y_%m_%d__%H_%M_%S'`;
 # SHOWING THE REMINDER & INFO
 # =================================================
 
-echo "\n----------------------\n"
+printf "\n----------------------\n\n"
 cat $BASEDIR/remind.txt
-echo "\n\n----------------------\n"
+printf "\n\n----------------------\n\n"
 
-echo "On branch: ${GREEN}$(git branch | grep \* | cut -d ' ' -f2)${NC}"
-echo "Deploying: ${GREEN}$_HOST_INDEX${NC}"
-echo "Conneting: ${GREEN}$CREDENTIALS:$PORT${NC}"
-echo "SendingTo: ${GREEN}$DESTINATION\n${NC}"
+printf "On branch: ${GREEN}$(git branch | grep \* | cut -d ' ' -f2)${NC}\n"
+printf "Deploying: ${GREEN}$_HOST_INDEX${NC}\n"
+printf "Conneting: ${GREEN}$CREDENTIALS:$PORT${NC}\n"
+printf "SendingTo: ${GREEN}$DESTINATION\n${NC}\n"
 
 # =================================================
 # DEPLOYING
@@ -97,4 +96,4 @@ echo "Git Branch Deployed: $(git branch | grep \* | cut -d ' ' -f2)" >> $BASEDIR
 
 # finish message
 
-echo "\nDone. Log file saved at log/deploy_$TODAY.log"
+printf "\nDone. Log file saved at log/deploy_$TODAY.log\n"
