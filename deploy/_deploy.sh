@@ -48,9 +48,10 @@ if [ -z $CREDENTIALS ];then
 	exit
 fi
 
-# get this script abs path
+# get this script abs path and git branch name
 
 BASEDIR=$( cd "$(dirname "$0")" ; pwd -P )
+GITBRANCH=$(git branch | grep \* | cut -d ' ' -f2)
 
 # cria a pasta de logs caso nao exista
 
@@ -68,7 +69,7 @@ printf "\n----------------------\n\n"
 cat $BASEDIR/remind.txt
 printf "\n\n----------------------\n\n"
 
-printf "On branch: ${GREEN}$(git branch | grep \* | cut -d ' ' -f2)${NC}\n"
+printf "On branch: ${GREEN}$GITBRANCH${NC}\n"
 printf "Deploying: ${GREEN}$_HOST_INDEX${NC}\n"
 printf "Conneting: ${GREEN}$CREDENTIALS:$PORT${NC}\n"
 printf "SendingTo: ${GREEN}$DESTINATION\n${NC}\n"
@@ -92,7 +93,7 @@ cd $BASEDIR/../ && rsync $RSYNC_PARAMS -e 'ssh -p '"$PORT" --files-from=$BASEDIR
 echo "" >> $BASEDIR/log/deploy_$TODAY.log && 
 echo "By: $(whoami)" >> $BASEDIR/log/deploy_$TODAY.log
 date >> $BASEDIR/log/deploy_$TODAY.log
-echo "Git Branch Deployed: $(git branch | grep \* | cut -d ' ' -f2)" >> $BASEDIR/log/deploy_$TODAY.log
+echo "Git Branch Deployed: $GITBRANCH" >> $BASEDIR/log/deploy_$TODAY.log
 
 # finish message
 
