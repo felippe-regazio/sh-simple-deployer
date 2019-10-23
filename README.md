@@ -114,4 +114,4 @@ You can pass a new set of rsync params to the deployer as the second arg:
 # ABOUT
 
 Sh Simple Deployer by Felippe Regazio under MIT LICENSE.  
-Thanks to Virgil (@virgilwashere) for help in turn this script really portable.
+Thanks to Virgil (@virgilwashere) for helping make this script more portable.
