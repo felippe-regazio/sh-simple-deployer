@@ -2,20 +2,19 @@
 
 source $(dirname "$0")/_hosts.sh
 
-# for colored outputs
-# Black        0;30     Dark Gray     1;30
-# Red          0;31     Light Red     1;31
-# Green        0;32     Light Green   1;32
-# Brown/Orange 0;33     Yellow        1;33
-# Blue         0;34     Light Blue    1;34
-# Purple       0;35     Light Purple  1;35
-# Cyan         0;36     Light Cyan    1;36
-# Light Gray   0;37     White         1;37
-
-RED='\033[0;31m'
-BLUE='\033[0;34m'
-GREEN='\033[0;32m'
-NC='\033[0m'
+export NC="\e[0m"             # "no colour"
+export BLACK="\e[0;30m"       # black
+export RED="\e[0;31m"         # red
+export GREEN="\e[0;32m"       # green
+export YELLOW="\e[38;5;226m"  # yellow 256
+export BLUE="\e[0;34m"        # blue
+export PURPLE="\e[0;35m"      # purple
+export CYAN="\e[0;36m"        # cyan
+export GREY="\e[0;37m"        # light grey
+export WHITE="\e[1;37m"       # white
+export LTRED="\e[1;31m"       # light red
+export LTGREEN="\e[1;32m"     # light green
+export ORANGE="\e[38;5;208m"  # orange 256
 
 # =================================================
 # COLLECTING PARAMS
