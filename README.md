@@ -4,7 +4,7 @@ This is a tiny deployer written in shell script.
 It uses rsync to sync files between local machine and server.
 
 You can save connections, add multiple hosts, include and ignore entire directories to deployment,
-and sync. This script automates the a common enviroment to sync local/server files with rsync.
+and sync. This script automates the a common environment to sync local/server files with rsync.
 
 You can read this post if you prefer a quick and fast start  
 https://dev.to/felipperegazio/a-tiny-deployer-made-with-shell-script-and-rsync-3djd
