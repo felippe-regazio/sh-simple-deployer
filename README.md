@@ -45,13 +45,13 @@ The deployer will look at this file to know where to send the files when you run
 ./deploy.sh {null || host_index}
 ```
 
-The command below will use the default host
+The command below will use the default \_hosts entry
 
 ```
 ./deploy.sh
 ```
 
-The command below will use a host named "myhost"
+The command below will use a \_hosts entry named "myhost"
 
 ```
 ./deploy.sh myhost
