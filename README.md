@@ -63,9 +63,12 @@ filezilla or GUI clients as reference to find the root path.
 
 ### ✏️ Add the directories that you want to upload on the directories.txt 
 
-The directories.txt lives inside the ./deploy folder. 
-Add the paths or files relative to project root, separated by a blank line.
-The default directory to sync is ".", or: the entire root folder.
+The `directories.txt` lives inside the ./deploy folder.  Add the paths or files relative to project root, separated by a blank line. The default directory to sync is ".", or: the entire root folder. An example to deploy a dist folder and a .htaccess file would be:
+
+```
+dist
+.htaccess
+```
 
 ### ✏️ Add the directories you want to ignore on the ignore.txt 
 
