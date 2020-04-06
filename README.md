@@ -103,14 +103,11 @@ Tested with Linux and Mac OS systems, and worked with no environment setup.
 
 # Git ?
 
-This script was made to work with git. But if your project its not using git, there is no problem.
-You will see a `fata: ...` error on the deployment information telling you `not a git repository`,
-just ignore it.
+This script was made to work with git. But if your project its not using git, there is no problem. You will an information telling you `not a git repository`, just ignore it.
 
 # Rsync
 
-The default rsync params used to sync files is `-vrzuh`.
-You can pass a new set of rsync params to the deployer as the second arg:
+The default rsync params used to sync files is `-vrzuh`. You can pass a new set of rsync params to the deployer as the second arg. When passing rsync params the hosts_array_index is mandatody even for default:
 
 ```bash
 ./deploy.sh {hosts_array_index} {rsync_params}
