@@ -103,7 +103,7 @@ Tested with Linux and Mac OS systems, and worked with no environment setup.
 
 # Git ?
 
-This script was made to work with git. But if your project its not using git, there is no problem. You will an information telling you `not a git repository`, just ignore it.
+This script was made to work with git. But if your project are not using git, there is no problem. You will see an information telling you `not a git repository`, just ignore it.
 
 # Rsync
 
