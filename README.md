@@ -21,17 +21,7 @@ root of your project.
 ### 🔧 Configure the \_hosts.sh file on ./deploy folder
 
 This file holds the host list, an array collection of possible hosts
-to perform a deploy on the current project.
-
-The deployer will look at this file to know where to send the files.
-If a name is not passed, will try to use the "default". Otherwise,
-you must pass a \_hosts.sh index name like:  
-
-``` bash
-./ deploy.sh {host_index}
-```
-
-The array pattern must be always the same.
+to perform a deploy on the current project. The array pattern must be always the same.
 
 - The 1st line must be a connection string like user@destination:port, 
 where port is optional.
@@ -47,6 +37,24 @@ declare -a default=(
 	/server/dest/path/abs  
 	https://myproject.url/  
 )
+```
+
+The deployer will look at this file to know where to send the files when you run the script. If a name is not passed, will try to use the "default". Otherwise, you must pass a \_hosts.sh index name like:  
+
+``` bash
+./deploy.sh {null || host_index}
+```
+
+The command below will use the default host
+
+```
+./deploy.sh
+```
+
+The command below will use a host named "myhost"
+
+```
+./deploy.sh myhost
 ```
 
 ```WARNING:```: To discover your project absolute root on the server, access your
